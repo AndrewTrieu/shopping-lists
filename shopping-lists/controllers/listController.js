@@ -30,7 +30,7 @@ const viewList = async (request) => {
       if (a.collected === b.collected) {
         return a.name.localeCompare(b.name);
       }
-      return a.collected ? -1 : 1;
+      return a.collected ? 1 : -1;
     });
     data.flag = false;
   }
