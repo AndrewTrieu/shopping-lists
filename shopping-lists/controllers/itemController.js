@@ -1,4 +1,5 @@
 import * as itemService from "../services/itemService.js";
+import { viewList } from "./listController.js";
 import * as requestUtils from "../utils/requestUtils.js";
 
 const markItemCollected = async (request) => {
@@ -6,7 +7,7 @@ const markItemCollected = async (request) => {
   const urlParts = url.pathname.split("/");
   await itemService.markCollected(urlParts[4], urlParts[2]);
 
-  return requestUtils.redirectTo(`/lists/${urlParts[4]}`);
+  return viewList(request);
 };
 
 const addItemToList = async (request) => {

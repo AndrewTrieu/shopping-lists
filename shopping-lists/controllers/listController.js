@@ -20,8 +20,20 @@ const viewList = async (request) => {
   const urlParts = url.pathname.split("/");
 
   const data = {
-    items: await listService.findById(urlParts[2]),
+    flag: true,
+    listData: await listService.findList(urlParts[2]),
+    items: await listService.findItems(urlParts[2]),
   };
+
+  if (data.items[0].name !== "Unknown") {
+    data.items.sort((a, b) => {
+      if (a.collected === b.collected) {
+        return a.name.localeCompare(b.name);
+      }
+      return a.collected ? -1 : 1;
+    });
+    data.flag = false;
+  }
 
   return new Response(await renderFile("list.eta", data), responseDetails);
 };

@@ -1,44 +1,46 @@
 <% layout("./layouts/layout.eta") %>
-<h1><%= it.list.name %></h1>
+
+<h1><%= it.listData.name %></h1>
 
 <h2>Add an item</h2>
 
-<form method="POST" action="/lists/<%= it.list.id %>/items">
+<form method="POST" action="/lists/<%= it.listData.id %>/items">
   Name: <input type="text" name="name" />
   <input type="submit" value="Add!" />
 </form>
 
 <h2>Active shopping lists</h2>
 
-<table>
-  <tr>
-    <th>Items</th>
-    <th>Collected</th>
-  </tr>
-  <%
-    it.items.sort((a, b) => {
-      if (a.collected === b.collected) {
-        return a.name.localeCompare(b.name);
-      }
-      return a.collected ? 1 : -1;
-    });
-    it.items.forEach((item) => {
-  %>
-    <tr>
-      <th>
-        <% if (item.collected) { %>
-          <del><%= item.name %></del>
-        <% } else { %>
-          <%= item.name %>
-        <% } %>
-      </th>
-      <th>
+<style>
+  td, th {
+    text-align: center;
+  }
+</style>
+
+<% if (it.flag) { %>
+  <p>No items in this list yet!</p>
+<% } else { %>
+  <table cellspacing="3" bgcolor="#000000">
+    <tr bgcolor="#ffffff">
+      <th>Items</th>
+      <th>Collected</th>
+    </tr>
+    <% it.items.forEach((item) => { %>
+    <tr bgcolor="#ffffff">
+      <% if (item.collected) { %>
+      <td><del><%= item.name %></del></td>
+      <td>X</td>
+      <% } else { %>
+      <td><%= item.name %></td>
+      <td>
         <form method="POST" action="/lists/<%= item.shopping_list_id %>/items/<%= item.id %>/collect">
           <input type="submit" value="Mark collected!" />
         </form>
-      </th>
+      </td>
+      <% } %>
     </tr>
-  <% }); %>
-</table>
+    <% }); %>
+  </table>
+<% } %>
 
 <a href="/lists">Shopping lists</a>

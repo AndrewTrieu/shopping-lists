@@ -23,11 +23,11 @@ const findAllLists = async () => {
   return result.rows;
 };
 
-const findById = async (shopping_list_id) => {
+const findList = async (id) => {
   const result = await executeQuery(
-    "SELECT * FROM shopping_list_items WHERE shopping_list_id = $shopping_list_id;",
+    "SELECT * FROM shopping_lists WHERE id = $id;",
     {
-      shopping_list_id: shopping_list_id,
+      id: id,
     }
   );
 
@@ -38,4 +38,19 @@ const findById = async (shopping_list_id) => {
   return { id: 0, name: "Unknown" };
 };
 
-export { deactivateByID, create, findAllLists, findById };
+const findItems = async (shopping_list_id) => {
+  const result = await executeQuery(
+    "SELECT * FROM shopping_list_items WHERE shopping_list_id = $shopping_list_id;",
+    {
+      shopping_list_id: shopping_list_id,
+    }
+  );
+
+  if (result.rows && result.rows.length > 0) {
+    return result.rows;
+  }
+
+  return [{ id: 0, name: "Unknown" }];
+};
+
+export { deactivateByID, create, findAllLists, findList, findItems };
