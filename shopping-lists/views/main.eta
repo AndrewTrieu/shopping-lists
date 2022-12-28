@@ -2,18 +2,11 @@
 <h1>Shared shopping lists</h1>
 
 <ul>
-<% if (it.listCount !== 0) { %>
-    <li>Shopping lists: <%= it.listCount %></li>
-<% } else { %>
+<% if (it.flag) { %>
     <li>No shopping lists yet.</li>
-<% } %>
-<% if (it.itemCount !== 0) { %>
-    <li>Shopping list items: <%= it.itemCount %></li>
 <% } else { %>
-    <li>No items yet.</li>
-<% } %>
+    <li>Shopping lists: <%= it.listCount %></li>
+    <li>Shopping list items: <%= it.itemCount %></li>
 </ul>
-
-<% if (it.listCount !== 0) { %>
-    <a href="/lists">Lists</a>
 <% } %>
+<a href="/lists">Lists</a>

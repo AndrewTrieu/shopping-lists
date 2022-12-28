@@ -1,6 +1,6 @@
-# fly.toml file generated for shopper on 2022-12-27T19:33:40+02:00
+# fly.toml file generated for shoptool on 2022-12-28T19:38:57+02:00
 
-app = "shopper"
+app = "shoptool"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

@@ -7,9 +7,14 @@ const responseDetails = {
 
 const showMain = async (_request) => {
   const data = {
+    flag: true,
     listCount: await mainService.checkList(),
     itemCount: await mainService.checkItem(),
   };
+
+  if (data.listCount > 0) {
+    data.flag = false;
+  }
 
   return new Response(await renderFile("main.eta", data), responseDetails);
 };
