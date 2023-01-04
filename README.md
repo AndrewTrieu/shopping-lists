@@ -122,5 +122,5 @@ directory.
   `Internal Server Error`. This is because Fly.io will spin up a new instance of
   the application for you and it needs a few seconds to start up. Subsequent
   requests will be much faster.
-- Playwright tests might be able to start, due to connection errors created by
+- Playwright tests might not be able to start, due to connection errors created by
   Docker or Deno. If you encounter this issue, please try running it again.
