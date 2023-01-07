@@ -1,12 +1,23 @@
 <% layout("./layouts/layout.eta") %>
-<h1>Shared shopping lists</h1>
 
-<ul>
-<% if (it.flag) { %>
-    <li>No shopping lists yet.</li>
-<% } else { %>
-    <li>Shopping lists: <%= it.listCount %></li>
-    <li>Shopping list items: <%= it.itemCount %></li>
-</ul>
-<% } %>
-<a href="/lists">Lists</a>
+<style>
+    .jumbotron {
+        background-color: lightblue;
+    }
+</style>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Shared shopping lists</h1>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <% if (it.flag) { %>
+        <p class="lead">No shopping lists yet.</p>
+    <% } else { %>
+        <p class="lead">Shopping lists: <%= it.listCount %></p>
+        <p class="lead">Shopping list items: <%= it.itemCount %></p>
+    <% } %>
+    <a class="btn btn-primary btn-lg" href="/lists" role="button">View Lists</a>
+</div>

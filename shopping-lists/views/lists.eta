@@ -1,24 +1,43 @@
 <% layout("./layouts/layout.eta") %>
-<h1>Shopping lists</h1>
 
-<h2>Add a shopping list</h2>
+<style>
+    .jumbotron {
+        background-color: lightblue;
+    }
+    .list-group-item {
+        background-color: lightyellow;
+    }
+</style>
 
-<form method="POST">
-  Name: <input type="text" name="name" />
-  <input type="submit" value="Create!" />
-</form>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Shopping lists</h1>
+  </div>
+</div>
 
-<h2>Active shopping lists</h2>
+<div class="container mt-5">
+  <h2>Add a shopping list</h2>
 
-<ul>
-<% it.lists.forEach((list) => { %>
-  <li>
-    <a href="/lists/<%= list.id %>"><%= list.name %></a>
-    <form method="POST" action="/lists/<%= list.id %>/deactivate">
-      <input type="submit" value="Deactivate list!" />
-    </form>
-  </li>
-<% }); %>
-</ul>
+  <form method="POST" class="form-inline">
+    <div class="form-group mr-3">
+      <label for="name" class="sr-only">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+    </div>
+    <button type="submit" class="btn btn-primary">Create!</button>
+  </form>
 
-<a href="/">Main page</a>
+  <h2 class="mt-5">Active shopping lists</h2>
+
+  <ul class="list-group">
+  <% it.lists.forEach((list) => { %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="/lists/<%= list.id %>"><%= list.name %></a>
+      <form method="POST" action="/lists/<%= list.id %>/deactivate">
+        <button type="submit" class="btn btn-secondary btn-sm">Deactivate list</button>
+      </form>
+    </li>
+  <% }); %>
+  </ul>
+
+  <a class="btn btn-primary mt-3" href="/" role="button">Main page</a>
+</div>
