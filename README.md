@@ -119,7 +119,7 @@ directory.
 ## Notes
 
 - When you access the application for the first time, it might display
-  `Internal Server Error`. This is because Fly.io will spin up a new instance of
+  `Internal Server Error` or there are no shopping list. This is because Fly.io will spin up a new instance of
   the application for you and it needs a few seconds to start up. Subsequent
   requests will be much faster.
 - Playwright tests might not be able to start, due to connection errors created by
