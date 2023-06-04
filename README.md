@@ -7,8 +7,8 @@ Users can create new shopping lists, add items to them, and mark items as
 collected. The application displays a list of all active shopping lists, as well
 as a page for each individual shopping list showing all its items.
 
-The application is deployed at https://shoptool.fly.dev/ using
-[Fly.io](https://fly.io/). Feel free to try it out!
+The application is deployed at ~~https://shoptool.fly.dev/ using
+[Fly.io](https://fly.io/)~~ (DELETED). Feel free to try it out!
 
 The web application is built using Deno, a JavaScript/TypeScript runtime with
 built-in support for modern web development. The user interface is rendered
